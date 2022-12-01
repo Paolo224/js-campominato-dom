@@ -8,6 +8,7 @@ button.addEventListener("click", function(){
     mainElement.innerHTML = '';
 
     let punteggio = 0;
+    button.innerHTML = "PLAY";
 
     document.getElementById('punti').innerHTML = "I tuoi punti: " + punteggio;
     document.getElementById('vittoria').innerHTML = " ";
@@ -27,6 +28,7 @@ button.addEventListener("click", function(){
             if(bombe.includes(k)){
                 document.getElementById('vittoria').innerHTML = "HAI PERSO!!!!111!!!!111!111";
                 newDivElement.classList.add('img-bomb');
+                button.innerHTML = "RESET";
             } else{
                 punteggio += 1;
                 if((punteggio >= 84)){
