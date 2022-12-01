@@ -2,38 +2,41 @@ const mainElement = document.querySelector('section');
 
 const button = document.getElementById('play');
 
-const bombe = [];
-
-let punteggio = 0;
-
 let randomBomb;
 
 button.addEventListener("click", function(){
     mainElement.innerHTML = '';
+
+    let punteggio = 0;
+
+    document.getElementById('punti').innerHTML = "I tuoi punti: " + punteggio;
+    document.getElementById('vittoria').innerHTML = " ";
+    const bombe = [];
+
+    while(bombe.length <= 16){
+        randomBomb = Math.floor(Math.random() * 100) + 1;
+        if(!bombe.includes(randomBomb)){
+            bombe.push(randomBomb);
+        } 
+    }
+
     for( let k = 1; k <= 100; k++){
-        let newDivElement = creazioneSquare(k);
+        let newDivElement = creazioneSquare();
         newDivElement.addEventListener("click", function(){
-            newDivElement.classList.toggle('cyan');
+            newDivElement.classList.toggle('green');
             if(bombe.includes(k)){
-                console.log('game hover');
+                document.getElementById('vittoria').innerHTML = "HAI PERSO!!!!111!!!!111!111";
+                newDivElement.classList.add('img-bomb');
             } else{
                 punteggio += 1;
-                console.log(punteggio);
+                if((punteggio >= 84)){
+                    document.getElementById('vittoria').innerHTML = "HAI VINTO!!!!111!!!!111!111";
+                }
+                document.getElementById('punti').innerHTML = "I tuoi punti: " + punteggio;
             }
         })
         mainElement.append(newDivElement);
     }
-
-    while(bombe.length <= 16){
-        randomBomb = Math.floor(Math.random() * 100);
-        if(bombe.includes(randomBomb)){
-            randomBomb = Math.floor(Math.random() * 100);
-        } else{
-            bombe.push(randomBomb);
-        }
-    }
-    console.log(bombe);
-    punteggio = 0;
 })
 
 // ================================================================================================= //
@@ -41,9 +44,8 @@ button.addEventListener("click", function(){
 // ================================================================================================= //
 // ================================================================================================= //
 
-function creazioneSquare(testo){
+function creazioneSquare(){
     let element = document.createElement('div');
-    element.innerHTML = testo;
     element.classList.add('square')
     return element;
 }

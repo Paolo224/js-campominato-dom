@@ -30,8 +30,24 @@ section{
     cursor: pointer;
 }
 
-.cyan{
+.green{
     background-color: rgb(13, 152, 0);
+}
+
+.img-bomb{
+    background-image: url(./img/istockphoto-149862676-612x612.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#punti{
+    color: green;
+    font-size: 2rem;
+}
+
+#vittoria{
+    font-size: 3rem;
+    color: red;
 }
 
 footer{
